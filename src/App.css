@@ -1,0 +1,34 @@
+/* container for the map */
+.leaflet-container {
+  height: 40vh;
+  width: 100%;
+}
+.card-map {
+  height: 20vh;
+  width: 50%;
+}
+
+body {
+  text-align: center;
+}
+.card-item {
+  height: 40vh;
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.location-container {
+  padding: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.location-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
