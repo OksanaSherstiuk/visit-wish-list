@@ -34,7 +34,14 @@ export default function VisitForm() {
     }
     //dispatch the new visit item to the reducer
     dispatch(addVisit(newVisitItem))
-    // setCurrentVisit('')
+
+    // clear the input fields after submit the form and set the location to the default one (London)
+    setLatitude('')
+    setLongitude('')
+
+    setCurrentVisit('')
+    setDetails('')
+    // e.target.reset()
   }
 
   return (
@@ -46,6 +53,7 @@ export default function VisitForm() {
           type="text"
           placeholder="Title"
           defaultValue={''}
+          value={currentVisit || ''}
           onChange={(e) => setCurrentVisit(e.target.value)}
         />
         <input
@@ -67,6 +75,7 @@ export default function VisitForm() {
           type="text"
           placeholder="Details..."
           defaultValue={''}
+          value={details || ''}
           onChange={(e) => setDetails(e.target.value)}
         />
         <button className={styles.submitBtn} type="submit">

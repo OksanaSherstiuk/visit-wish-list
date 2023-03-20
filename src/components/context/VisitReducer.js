@@ -7,6 +7,10 @@ export const initialState = {
   visits: [],
 }
 
+export const initializer = () => {
+  return JSON.parse(localStorage.getItem('visits')) || initialState
+}
+
 export const addVisit = (payload) => ({
   type: ADD_VISIT,
   payload,

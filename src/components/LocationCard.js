@@ -46,6 +46,7 @@ export default function LocationCard({
             <span className={styles.cardTitles}> Details:</span>{' '}
             {edit ? (
               <textarea
+                className={styles.editTextArea}
                 type="text"
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
