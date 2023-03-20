@@ -1,0 +1,14 @@
+.footer {
+  background: rgb(56, 114, 128);
+  background: linear-gradient(
+    180deg,
+    rgba(56, 114, 128, 1) 13%,
+    rgba(93, 99, 101, 1) 89%
+  );
+  height: 50px;
+}
+.icon {
+  color: white;
+  font-size: 30px;
+  margin: 10px;
+}

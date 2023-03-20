@@ -1,5 +1,30 @@
 .header {
-  background-color: #6dbadc;
+  background: rgb(93, 99, 101);
+  background: linear-gradient(
+    180deg,
+    rgba(93, 99, 101, 1) 7%,
+    rgba(53, 145, 176, 1) 44%,
+    rgba(56, 114, 128, 1) 85%
+  );
   height: 100px;
   margin-bottom: 20px;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.icon {
+  color: white;
+  height: 50px;
+  width: 50px;
 }

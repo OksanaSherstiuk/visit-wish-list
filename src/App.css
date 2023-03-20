@@ -1,6 +1,6 @@
 /* container for the map */
 .leaflet-container {
-  height: 40vh;
+  height: 100%;
   width: 100%;
 }
 .card-map {
@@ -22,13 +22,13 @@ body {
 
 .location-container {
   padding: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.location-form {
+/* .location-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px;
-}
+} */

@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { LocationContext } from '../context/LocationContext'
 import DraggableMarker from '../DraggableMarker/DraggableMarker'
-import './mapsearch.css'
+import styles from './MapSearch.module.css'
 function ChangeMapView({ coords }) {
   const map = useMap()
   map.setView(coords, map.getZoom())
@@ -25,6 +25,7 @@ export default function MapSearch() {
     console.log(latLng)
     // setCoordinates({ lat: latLng.lat, lon: latLng.lng }) // update coordinates state
     setLocation({ lat: latLng.lat, lon: latLng.lng }) // update coordinates state
+    setMapCenter([latLng.lat, latLng.lng])
   }
 
   const handleSearchSubmit = (event) => {
@@ -49,43 +50,46 @@ export default function MapSearch() {
 
   return (
     <div>
-      <div className="search-container">
-        <form onSubmit={handleSearchSubmit}>
+      <div className={styles.searchContainer}>
+        <form onSubmit={handleSearchSubmit} className={styles.formContainer}>
           <input
-            className="search-input"
+            className={styles.searchInput}
             type="text"
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <button className="search-btn" type="submit">
-            Search
+          <button className={styles.searchBtn} type="submit">
+            Search Location
           </button>
         </form>{' '}
       </div>
-      <MapContainer
-        center={mapCenter}
-        zoom={13}
-        style={{ height: '500px', width: '100%' }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {searchResults.map((result) => (
-          <Marker
-            key={result.place_id}
-            position={[parseFloat(result.lat), parseFloat(result.lon)]}
-          >
-            <Popup>{result.display_name}</Popup>
-          </Marker>
-        ))}
-        <DraggableMarker onPositionChanged={handlePositionChanged} />
-        <ChangeMapView coords={mapCenter} />
-      </MapContainer>
+      <div className={styles.mapContainer}>
+        <MapContainer
+          center={mapCenter}
+          zoom={13}
+          style={{ height: '400px', width: '80%' }}
+          className={styles.map}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {searchResults.map((result) => (
+            <Marker
+              key={result.place_id}
+              position={[parseFloat(result.lat), parseFloat(result.lon)]}
+            >
+              <Popup>{result.display_name}</Popup>
+            </Marker>
+          ))}
+          <DraggableMarker onPositionChanged={handlePositionChanged} />
+          <ChangeMapView coords={mapCenter} />
+        </MapContainer>
+      </div>
 
       {/* {coordinates && ( // render coordinates if they are not null
         <div>
           Coordinates: Latitude: {coordinates.lat}, Longitude: {coordinates.lon}
         </div> */}
       {location && ( // render coordinates if they are not null
-        <div>
+        <div className={styles.coordinatesResult}>
           Coordinates: Latitude: {location.lat}, Longitude: {location.lon}
         </div>
       )}

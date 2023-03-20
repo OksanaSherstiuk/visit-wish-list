@@ -1,5 +1,6 @@
 import Map from './Map/Map'
 import { useState } from 'react'
+import styles from './LocationCard.module.css'
 //I need to add here connection to the coordinates state so the Map component can get them as a prop for the {position} variable and could show the static location
 
 export default function LocationCard({
@@ -15,34 +16,55 @@ export default function LocationCard({
     setEdit(false)
   }
   return (
-    <div className="card-item">
-      <div className="card-map">
+    <div className={item.visited ? styles.cardItemVisited : styles.cardItem}>
+      {/* {item.visited ? className{styles.cardItemVisited} : className={styles.cardItem}} */}
+      <div className={styles.cardMap}>
         <Map item={item} />
       </div>
-      <div>
-        <p>
-          <b> Title:{item.title}</b>
-        </p>
-        <p>Coordinates:</p>
-        <p>
-          Latitude: {item.latitude} Longitude{item.longitude}
-        </p>
-        <p>Date of creation:{new Date(item.dateOfCreation).toLocaleString()}</p>
-        <p>
-          Details:
-          {edit ? (
-            <textarea
-              type="text"
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-            />
-          ) : (
-            item.details
-          )}
-        </p>
-        <p>Visited:{item.visited ? 'Visited' : 'Not yet'}</p>
+      <div className={styles.cardInfoPart}>
+        <div className={styles.locationInfo}>
+          <p>
+            <span className={styles.cardTitles}> Title: </span>
+            <span className={styles.visitTitle}> {item.title}</span>
+          </p>
+          <p>
+            <span className={styles.cardTitles}>Coordinates:</span>
+          </p>
+          <p>
+            <span className={styles.cardTitlesLatLon}>Latitude:</span>{' '}
+            {item.latitude}
+          </p>
+          <p>
+            <span className={styles.cardTitlesLatLon}>Longitude:</span>{' '}
+            {item.longitude}
+          </p>
+          <p>
+            <span className={styles.cardTitles}>Date of creation:</span>{' '}
+            {new Date(item.dateOfCreation).toLocaleString()}
+          </p>
+          <p>
+            <span className={styles.cardTitles}> Details:</span>{' '}
+            {edit ? (
+              <textarea
+                type="text"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+              />
+            ) : (
+              item.details
+            )}
+          </p>
+          <p>
+            <span className={styles.cardTitles}>Visited:</span>{' '}
+            {item.visited ? (
+              <span className={styles.visited}>Hell Yeah!</span>
+            ) : (
+              <span>Not yet</span>
+            )}
+          </p>
+        </div>
         {edit ? (
-          <>
+          <div className={styles.btnContainer}>
             <button
               onClick={() => {
                 onEditClicked({ id: item.id, details: details })
@@ -52,14 +74,14 @@ export default function LocationCard({
               Save
             </button>
             <button onClick={cancelHandler}>Cancel</button>
-          </>
+          </div>
         ) : (
-          <>
+          <div className={styles.btnContainer}>
             {' '}
             <button onClick={() => onVisitedClicked(item)}>Visited</button>
             <button onClick={() => onDeleteClicked(item)}>Delete</button>
             <button onClick={() => setEdit(true)}>Edit</button>
-          </>
+          </div>
         )}
       </div>
     </div>

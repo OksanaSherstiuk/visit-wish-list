@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { VisitContext } from './context/VisitContext'
 import { addVisit } from './context/VisitReducer'
 import { LocationContext } from './context/LocationContext'
+import styles from './VisitForm.module.css'
 
 export default function VisitForm() {
   //get dispatch from context
@@ -38,32 +39,39 @@ export default function VisitForm() {
 
   return (
     <>
-      <form className="location-form" onSubmit={addVisitItem}>
+      <form className={styles.locationForm} onSubmit={addVisitItem}>
+        <h2>I want to visit:</h2>
         <input
+          className={styles.input}
           type="text"
           placeholder="Title"
           defaultValue={''}
           onChange={(e) => setCurrentVisit(e.target.value)}
         />
         <input
+          className={styles.input}
           type="text"
           placeholder="Paste Latitude"
           value={latitude || ''}
           onChange={(e) => setLatitude(e.target.value)}
         />
         <input
+          className={styles.input}
           type="text"
           placeholder="Paste Longitude"
           value={longitude || ''}
           onChange={(e) => setLongitude(e.target.value)}
         />
         <textarea
+          className={styles.inputTextarea}
           type="text"
-          placeholder="details"
+          placeholder="Details..."
           defaultValue={''}
           onChange={(e) => setDetails(e.target.value)}
         />
-        <button type="submit">Add Location</button>
+        <button className={styles.submitBtn} type="submit">
+          Add Location
+        </button>
       </form>
     </>
   )

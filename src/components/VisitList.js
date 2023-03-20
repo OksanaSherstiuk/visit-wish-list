@@ -3,6 +3,7 @@ import LocationCard from './LocationCard'
 import { useContext } from 'react'
 import { VisitContext } from './context/VisitContext'
 import { deleteVisit, markVisited, editVisit } from './context/VisitReducer'
+import styles from './VisitList.module.css'
 
 export default function VisitList() {
   const { state, dispatch } = useContext(VisitContext)
@@ -19,7 +20,7 @@ export default function VisitList() {
 
   return (
     <div>
-      <h1> VisitList</h1>
+      <h1 className={styles.title}> My Visit Wish List</h1>
       <div className="location-container">
         {state.visits.map((item) => (
           <LocationCard

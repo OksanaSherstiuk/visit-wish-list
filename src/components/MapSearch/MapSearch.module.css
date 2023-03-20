@@ -1,0 +1,54 @@
+.searchContainer {
+}
+.searchInput {
+  width: 40%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #387280;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px #5d6365;
+}
+
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBtn {
+  background-color: #387280;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  box-shadow: 0px 3px 5px #5d6365;
+}
+.coordinatesResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
